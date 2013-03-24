@@ -1,5 +1,6 @@
 
 mgl is an application to manage the **M**SI **G**T **L**eds
+This application is under development and doesn't work yet.
 
 To compile this project you need libudev.h on your system.
 Install this on debian/ubuntu with `sudo aptitude install libudev-dev`
