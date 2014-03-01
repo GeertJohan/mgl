@@ -20,8 +20,8 @@ func main() {
 	// 10 vaag witte kleur
 
 	//Gaming mode = only left area on 1 color with a intensity level
-	sendActivateArea(leds, areaLeft, colorSky, level1)
-	sendActivateArea(leds, areaMiddle, colorBlue, level1)
+	sendActivateArea(leds, areaLeft, colorGreen, level1)
+	sendActivateArea(leds, areaMiddle, colorRed, level1)
 	sendActivateArea(leds, areaRight, colorPurple, level1)
 	commit(leds, modeNormal)
 
@@ -37,8 +37,8 @@ func sendActivateArea(leds *hid.Device, area uint8, color uint8, level uint8) {
 	data[3] = area  // 1 = left / 2 = middle / 3 = right
 	data[4] = color // see color constants
 	data[5] = level // see level constants
-	data[6] = 0x00  // empty 
-	data[7] = 0x00  // empty 
+	data[6] = 0x00  // empty
+	data[7] = 0x00  // empty
 	data[8] = 0xec  // EOR
 
 	_, err := leds.SendFeatureReport(data)
@@ -54,11 +54,11 @@ func commit(leds *hid.Device, mode uint8) {
 	data[1] = 0x02 // Fixed report value?
 	data[2] = 0x41 // commit byte
 	data[3] = mode // current mode
-	data[4] = 0x00 // empty 
-	data[5] = 0x00 // empty 
-	data[6] = 0x00 // empty 
-	data[7] = 0x00 // empty 
-	data[8] = 0xec // EOR 
+	data[4] = 0x00 // empty
+	data[5] = 0x00 // empty
+	data[6] = 0x00 // empty
+	data[7] = 0x00 // empty
+	data[8] = 0xec // EOR
 
 	_, err := leds.SendFeatureReport(data)
 	if err != nil {
